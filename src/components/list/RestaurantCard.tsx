@@ -20,7 +20,7 @@ const RestaurantCard: FC<{item: any}> = ({item}) => {
       }}>
       <View style={styles.card}>
         <View>
-          <Image source={{uri: item?.image || item?.imageUrl}} style={styles.image} />
+          <Image source={{uri: item?.imageUrl}} style={styles.image} />
         </View>
 
         <View style={styles.info}>
@@ -33,28 +33,18 @@ const RestaurantCard: FC<{item: any}> = ({item}) => {
                 fontFamily="Okra-Bold">
                 {item?.name}
               </CustomText>
-              <CustomText numberOfLines={2} style={{marginTop: 4}}>
-                {item?.description}
-              </CustomText>
-              <CustomText style={{marginTop: 4, fontWeight: 'bold'}}>
-                ₹{item?.price}
+              <CustomText>
+                {item.time} • ₹150 for one
               </CustomText>
             </View>
 
-            <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 8}}>
-              <Image 
-                source={item?.isVeg ? require('@assets/icons/veg.png') : require('@assets/icons/non_veg.png')} 
-                style={{width: 16, height: 16, marginRight: 8}} 
-              />
-              <CustomText fontSize={12} color="#666">
-                {item?.isVeg ? 'Veg' : 'Non-Veg'}
-              </CustomText>
-            </View>
+            <StarRating rating={item?.rating} />
           </View>
           <DottedLine />
-          {item?.isCustomizable && (
-            <CustomText fontSize={12} color="#666">
-              Customizable
+          {item?.discount && (
+            <CustomText>
+              {item.discount}{' '}
+              {item?.discountAmount && `• ${item?.discountAmount}`}
             </CustomText>
           )}
         </View>

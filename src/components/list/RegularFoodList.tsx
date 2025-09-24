@@ -3,8 +3,7 @@ import React from 'react'
 import { useStyles } from 'react-native-unistyles'
 import { cardStyles } from '@unistyles/cardStyles'
 import ScalePress from '@components/ui/ScalePress'
-import { regularFoodData, foodCategories } from '@utils/dummyData'
-import { navigate } from '@utils/NavigationUtils'
+import { regularFoodData } from '@utils/dummyData'
 
 const RegularFoodList = () => {
 
@@ -12,29 +11,7 @@ const RegularFoodList = () => {
 
     const renderItem = ({ item }: any) => {
         return (
-            <ScalePress 
-                style={styles.itemContainer}
-                onPress={() => {
-                    // Navigate to food category screen with specific food items
-                    const categoryKey = item.name.toLowerCase().replace(/\s+/g, '');
-                    if (foodCategories[categoryKey as keyof typeof foodCategories]) {
-                        navigate('RestaurantScreen', {
-                            item: {
-                                name: item.name,
-                                items: foodCategories[categoryKey as keyof typeof foodCategories]
-                            }
-                        });
-                    } else {
-                        // For categories without specific data, show general items
-                        navigate('RestaurantScreen', {
-                            item: {
-                                name: item.name,
-                                items: []
-                            }
-                        });
-                    }
-                }}
-            >
+            <ScalePress style={styles.itemContainer}>
                 <Image source={{ uri: item?.imageUrl }} style={styles.regularFoodImage} />
             </ScalePress>
         )

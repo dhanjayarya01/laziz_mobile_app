@@ -4,12 +4,16 @@ import {
   StatusBar,
   Image,
   Animated,
+  TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
-import React, {FC, useEffect, useRef} from 'react';
+import React, {FC, useEffect, useRef, useState} from 'react';
 import {loginStyles} from '@unistyles/authStyles';
 import {useStyles} from 'react-native-unistyles';
 import CustomText from '@components/global/CustomText';
 import BreakerText from '@components/ui/BreakerText';
+import PhoneInput from '@components/ui/PhoneInput';
+import {resetAndNavigate} from '@utils/NavigationUtils';
 import SocialLogin from '@components/ui/SocialLogin';
 import useKeyboardOffsetHeight from '@utils/useKeyboardOffsetHeight';
 
@@ -17,6 +21,8 @@ const LoginScreen: FC = () => {
   const animatedValue = useRef(new Animated.Value(0)).current
   const keyboardOffsetHeight = useKeyboardOffsetHeight()
   const {styles} = useStyles(loginStyles);
+  const [phone, setPhone] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (keyboardOffsetHeight == 0) {
@@ -33,6 +39,14 @@ const LoginScreen: FC = () => {
         }).start()
     }
 }, [keyboardOffsetHeight])
+
+  const handleLogin = async () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      resetAndNavigate('UserBottomTab');
+    }, 2000);
+  };
 
   return (
     <View style={styles.container}>
@@ -52,9 +66,9 @@ const LoginScreen: FC = () => {
         <CustomText fontFamily="Okra-Bold" variant="h2" style={styles.title}>
           Welcome to Laziz
         </CustomText>
-        
-        <CustomText fontFamily="Okra-Medium" variant="h4" style={styles.subtitle}>
-          Your favorite food, delivered fresh
+
+        <CustomText fontFamily="Okra-Medium" variant="h6" style={styles.subtitle}>
+          Your favorite food delivery app
         </CustomText>
 
         <BreakerText text="Sign in to continue" />

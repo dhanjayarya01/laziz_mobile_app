@@ -4,7 +4,7 @@ import {cardStyles} from '@unistyles/cardStyles';
 import {useStyles} from 'react-native-unistyles';
 import RestaurantCard from './RestaurantCard';
 import CustomText from '@components/global/CustomText';
-import {restaurantItemsData} from '@utils/dummyData';
+import {recommendedListData} from '@utils/dummyData';
 
 const RestaurantList = () => {
   const {styles} = useStyles(cardStyles);
@@ -19,17 +19,17 @@ const RestaurantList = () => {
         style={styles.centerText}
         fontFamily="Okra-Bold"
         fontSize={12}>
-        100+ delicious food items available
+        1823 restaurants delivering to you
       </CustomText>
       <CustomText
         style={styles.centerText}
         fontFamily="Okra-Medium"
         fontSize={12}>
-        FEATURED FOODS
+        FEATURED
       </CustomText>
 
       <FlatList
-        data={restaurantItemsData}
+        data={recommendedListData}
         scrollEventThrottle={16}
         bounces={false}
         showsVerticalScrollIndicator={false}
@@ -48,7 +48,7 @@ const RestaurantList = () => {
                 Made with ❤️
               </CustomText>
               <CustomText fontFamily="Okra-Medium" variant="h5">
-                By - Laziz Team
+                By - Ritik Prasad
               </CustomText>
             </View>
           );

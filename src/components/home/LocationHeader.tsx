@@ -50,10 +50,10 @@ const LocationHeader: FC = () => {
         <View style={styles.flexRowGap}>
           <TouchableOpacity style={styles.translation}>
             <Icon
-              name="notifications-outline"
+              name="bell"
               iconFamily="Ionicons"
-              size={24}
               color={textColor}
+              size={28}
             />
           </TouchableOpacity>
 

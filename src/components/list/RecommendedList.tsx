@@ -71,7 +71,7 @@ const RecommendedList = () => {
               color={Colors.lightText}
               fontSize={9}
               numberOfLines={1}>
-              {`${item.time} • ${item?.distance}`}
+              {`${item.time}`}
             </CustomText>
           </View>
         </View>

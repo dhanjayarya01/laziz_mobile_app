@@ -1,5 +1,9 @@
 import DeliveryFocused from '@assets/tabicons/delivery_focused.png';
 import Delivery from '@assets/tabicons/delivery.png';
+import ReorderFocused from '@assets/tabicons/reorder_focused.png';
+import Reorder from '@assets/tabicons/reorder.png';
+import LiveFocused from '@assets/tabicons/live_focused.png';
+import Live from '@assets/tabicons/live.png';
 import DiningFocused from '@assets/tabicons/dining_focused.png';
 import Dining from '@assets/tabicons/dining.png';
 
@@ -9,7 +13,6 @@ import {FC, memo} from 'react';
 import {Image, TextStyle, View, ViewStyle} from 'react-native';
 import {RFValue} from 'react-native-responsive-fontsize';
 import {useAppSelector} from '@states/reduxHook';
-import Icon from '@components/global/Icon';
 
 interface TabProps {
   name: string;
@@ -46,19 +49,18 @@ const textStyleActive: TextStyle = {
 const TabIcon: FC<TabProps> = memo(({name}) => {
   return (
     <View style={tabStyles}>
-      {name === 'Delivery' || name === 'Dining' ? (
-        <Image
-          source={name === 'Delivery' ? Delivery : Dining}
-          style={styles}
-        />
-      ) : (
-        <Icon
-          name={name === 'Orders' ? 'receipt-outline' : 'person-outline'}
-          iconFamily="Ionicons"
-          size={18}
-          color={Colors.lightText}
-        />
-      )}
+      <Image
+        source={
+          name === 'Delivery'
+            ? Delivery
+            : name === 'Dining'
+            ? Dining
+            : name === 'Reorder'
+            ? Reorder
+            : Live
+        }
+        style={styles}
+      />
       <CustomText style={textStyleInActive}>{name}</CustomText>
     </View>
   );
@@ -70,24 +72,28 @@ const TabIconFocused: FC<TabProps> = memo(({name}) => {
 
   return (
     <View style={tabStyles}>
-      {name === 'Delivery' || name === 'Dining' ? (
-        <Image
-          source={name === 'Delivery' ? DeliveryFocused : DiningFocused}
-          style={[
-            styles,
-            {
-              tintColor: isVegMode ? Colors.active : Colors.primary,
-            },
-          ]}
-        />
-      ) : (
-        <Icon
-          name={name === 'Orders' ? 'receipt' : 'person'}
-          iconFamily="Ionicons"
-          size={18}
-          color={isVegMode ? Colors.active : Colors.primary}
-        />
-      )}
+      <Image
+        source={
+          name === 'Delivery'
+            ? DeliveryFocused
+            : name === 'Dining'
+            ? DiningFocused
+            : name === 'Reorder'
+            ? ReorderFocused
+            : LiveFocused
+        }
+        style={[
+          styles,
+          {
+            tintColor:
+              name === 'Live'
+                ? undefined
+                : isVegMode
+                ? Colors.active
+                : Colors.primary,
+          },
+        ]}
+      />
       <CustomText style={textStyleActive}>{name}</CustomText>
     </View>
   );
@@ -101,11 +107,11 @@ export const DeliveryTabIcon: FC<IconProp> = ({focused}) => {
   );
 };
 
-export const OrdersTabIcon: FC<IconProp> = ({focused}) => {
+export const ReorderTabIcon: FC<IconProp> = ({focused}) => {
   return focused ? (
-    <TabIconFocused name="Orders" />
+    <TabIconFocused name="Reorder" />
   ) : (
-    <TabIcon name="Orders" />
+    <TabIcon name="Reorder" />
   );
 };
 
@@ -113,6 +119,6 @@ export const DiningTabIcon: FC<IconProp> = ({focused}) => {
   return focused ? <TabIconFocused name="Dining" /> : <TabIcon name="Dining" />;
 };
 
-export const ProfileTabIcon: FC<IconProp> = ({focused}) => {
-  return focused ? <TabIconFocused name="Profile" /> : <TabIcon name="Profile" />;
+export const LiveTabIcon: FC<IconProp> = ({focused}) => {
+  return focused ? <TabIconFocused name="Live" /> : <TabIcon name="Live" />;
 };

@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import DeliveryScreen from '@features/delivery/DeliveryScreen';
 import OrdersScreen from '@features/orders/OrdersScreen';
 import DiningScreen from '@features/dining/DiningScreen';
-import ProfileScreen from '@features/profile/ProfileScreen';
+import LiveScreen from '@features/live/LiveScreen';
 import CustomTabBar from './CustomTabBar';
 
 const Tab = createBottomTabNavigator();
@@ -18,9 +18,9 @@ const UserBottomTab: React.FC = () => {
         tabBarHideOnKeyboard: true,
       }}>
       <Tab.Screen name="Home" component={DeliveryScreen} />
-      <Tab.Screen name="Orders" component={OrdersScreen} />
+      <Tab.Screen name="Order" component={OrdersScreen} />
       <Tab.Screen name="Dining" component={DiningScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Profile" component={LiveScreen} />
     </Tab.Navigator>
   );
 };

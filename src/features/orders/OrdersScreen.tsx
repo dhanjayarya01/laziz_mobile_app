@@ -95,6 +95,8 @@ const OrdersScreen: FC = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const [selectedFoodItem, setSelectedFoodItem] = useState(null);
+  const [foodModalVisible, setFoodModalVisible] = useState(false);
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -572,6 +574,159 @@ const OrdersScreen: FC = () => {
           </View>
         </View>
       </Modal>
+
+      {/* Food Item Details Modal */}
+      {foodModalVisible && (
+        <View style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0,0,0,0.5)',
+          justifyContent: 'flex-end',
+          zIndex: 9999,
+        }}>
+          <View style={{
+            backgroundColor: '#fff',
+            borderTopLeftRadius: 20,
+            borderTopRightRadius: 20,
+            maxHeight: Dimensions.get('window').height * 0.6,
+            minHeight: 300,
+          }}>
+            {/* Modal Header */}
+            <View style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: 20,
+              borderBottomWidth: 1,
+              borderBottomColor: '#f0f0f0',
+            }}>
+              <CustomText fontFamily="Okra-Bold" fontSize={18} color="#333">
+                Food Details
+              </CustomText>
+              <TouchableOpacity
+                onPress={() => setFoodModalVisible(false)}
+                style={{
+                  backgroundColor: '#f0f0f0',
+                  borderRadius: 20,
+                  padding: 8,
+                }}
+              >
+                <Icon name="close" iconFamily="Ionicons" size={20} color="#666" />
+              </TouchableOpacity>
+            </View>
+
+            {/* Modal Content */}
+            <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
+              {selectedFoodItem && (
+                <View style={{padding: 20}}>
+                  {/* Food Image */}
+                  <View style={{
+                    alignItems: 'center',
+                    marginBottom: 20,
+                  }}>
+                    <Image
+                      source={{uri: selectedFoodItem.image}}
+                      style={{
+                        width: 200,
+                        height: 200,
+                        borderRadius: 12,
+                      }}
+                    />
+                  </View>
+
+                  {/* Food Info */}
+                  <View style={{
+                    backgroundColor: '#f8f9fa',
+                    borderRadius: 12,
+                    padding: 16,
+                    marginBottom: 20,
+                  }}>
+                    <CustomText fontFamily="Okra-Bold" fontSize={20} color="#333" style={{marginBottom: 8}}>
+                      {selectedFoodItem.name}
+                    </CustomText>
+                    <CustomText fontFamily="Okra-Medium" fontSize={14} color="#666" style={{marginBottom: 12}}>
+                      {selectedFoodItem.description}
+                    </CustomText>
+                    
+                    <View style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      marginBottom: 8,
+                    }}>
+                      <CustomText fontFamily="Okra-Medium" fontSize={14} color="#666">
+                        Quantity
+                      </CustomText>
+                      <CustomText fontFamily="Okra-Bold" fontSize={16} color="#333">
+                        {selectedFoodItem.quantity}
+                      </CustomText>
+                    </View>
+                    
+                    <View style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      marginBottom: 8,
+                    }}>
+                      <CustomText fontFamily="Okra-Medium" fontSize={14} color="#666">
+                        Price per item
+                      </CustomText>
+                      <CustomText fontFamily="Okra-Bold" fontSize={16} color="#333">
+                        ₹{selectedFoodItem.price}
+                      </CustomText>
+                    </View>
+                    
+                    <View style={{
+                      height: 1,
+                      backgroundColor: '#e0e0e0',
+                      marginVertical: 8,
+                    }} />
+                    
+                    <View style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                    }}>
+                      <CustomText fontFamily="Okra-Bold" fontSize={18} color="#333">
+                        Total
+                      </CustomText>
+                      <CustomText fontFamily="Okra-Bold" fontSize={18} color="#333">
+                        ₹{selectedFoodItem.price * selectedFoodItem.quantity}
+                      </CustomText>
+                    </View>
+                  </View>
+
+                  {/* Additional Info */}
+                  <View style={{
+                    backgroundColor: '#f8f9fa',
+                    borderRadius: 12,
+                    padding: 16,
+                  }}>
+                    <CustomText fontFamily="Okra-Bold" fontSize={16} color="#333" style={{marginBottom: 8}}>
+                      Order Information
+                    </CustomText>
+                    <CustomText fontFamily="Okra-Medium" fontSize={14} color="#666" style={{marginBottom: 4}}>
+                      • Fresh ingredients used
+                    </CustomText>
+                    <CustomText fontFamily="Okra-Medium" fontSize={14} color="#666" style={{marginBottom: 4}}>
+                      • Prepared with authentic spices
+                    </CustomText>
+                    <CustomText fontFamily="Okra-Medium" fontSize={14} color="#666" style={{marginBottom: 4}}>
+                      • Hot and fresh delivery
+                    </CustomText>
+                    <CustomText fontFamily="Okra-Medium" fontSize={14} color="#666">
+                      • 30 minutes preparation time
+                    </CustomText>
+                  </View>
+                </View>
+              )}
+            </ScrollView>
+          </View>
+        </View>
+      )}
     </View>
   );
 };

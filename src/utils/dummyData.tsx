@@ -1,37 +1,37 @@
 export const recommendedListData = [
     {
         "id": 1,
-        "name": "Chicken Dehati",
-        "discount": "30% OFF",
-        "discountAmount": "up to ₹60",
-        "time": "20 mins",
-        "distance": "0.5 km",
-        "rating": 4.8,
+        "name": "Laziz Kitchen - Chicken Handi",
+        "discount": "40% OFF",
+        "discountAmount": "up to ₹80",
+        "time": "25 mins",
+        "distance": "5.5 km",
+        "rating": 4.2,
         "imageUrl": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/9/26/adac4b96-5dea-4cd7-93f1-c654f9227a7f_82387%20(1).jpg"
     },
     {
         "id": 2,
-        "name": "Chicken Biryani",
-        "discount": "25% OFF",
-        "discountAmount": "up to ₹50",
-        "time": "25 mins",
-        "rating": 4.9,
-        "distance": "0.5 km",
+        "name": "Laziz Kitchen - Dehati Chicken",
+        "discount": "10% OFF",
+        "discountAmount": "up to ₹40",
+        "time": "33 mins",
+        "rating": 4.5,
+        "distance": "8.5 km",
         "imageUrl": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/6/11/a5cee281-c25f-494a-8cab-ba7f49acfb03_803172.JPG"
     },
     {
         "id": 3,
-        "name": "Mutton Curry",
-        "discount": "20% OFF",
-        "discountAmount": "up to ₹40",
-        "time": "30 mins",
-        "rating": 4.7,
-        "distance": "0.5 km",
+        "name": "Laziz Kitchen - Biyani Special",
+        "discount": "FLAT ₹100 OFF",
+        "discountAmount": "up to ₹70",
+        "time": "36 mins",
+        "rating": 3.2,
+        "distance": "7.5 km",
         "imageUrl": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/e0839ff574213e6f35b3899ebf1fc597"
     },
     {
         "id": 4,
-        "name": "Neel Kamal Veg Fami...",
+        "name": "Laziz Kitchen - Chicken Chilli",
         "discount": "FLAT ₹50 OFF",
         "rating": 1.2,
         "discountAmount": "up to ₹70",
@@ -121,12 +121,12 @@ export const recommendedListData = [
 export const regularFoodData = [
     {
         id: 1,
-        name: "biryani",
+        name: "biriyani",
         imageUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/MERCHANDISING_BANNERS/IMAGES/MERCH/2024/7/2/6ef07bda-b707-48ea-9b14-2594071593d1_Biryani.png'
     },
     {
         id: 2,
-        name: "burgers",
+        name: "burger",
         imageUrl: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/MERCHANDISING_BANNERS/IMAGES/MERCH/2024/7/2/8f508de7-e0ac-4ba8-b54d-def9db98959e_burger.png'
     },
     {
@@ -378,11 +378,11 @@ export const restaurantItemsData = [
 ];
 
 export const filtersOption = [
-    'Starter',
-    'Main Course',
-    'Cold Drinks',
-    'Coffee',
-    'Laziz Special'
+    'Nearest',
+    'Great Offers',
+    'Rating 4.0',
+    'Gourmet',
+    'Pure Veg'
 ]
 
 export const restaurantsItemfiltersOption = [
@@ -393,85 +393,3 @@ export const restaurantsItemfiltersOption = [
     'Spicy',
     'Sweets'
 ]
-
-// Food category data for navigation
-export const foodCategories = {
-    pizza: [
-        {
-            "id": "p1",
-            "name": "Margherita Pizza",
-            "description": "Classic pizza with fresh mozzarella and basil.",
-            "price": 299,
-            "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/dpventcrozvfni0lqb10",
-            "isCustomizable": true,
-            "isVeg": true,
-        },
-        {
-            "id": "p2",
-            "name": "Pepperoni Pizza",
-            "description": "Loaded with pepperoni slices and cheese.",
-            "price": 399,
-            "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/FOOD_CATALOG/IMAGES/CMS/2024/9/19/e1e9ebad-6ef4-45d2-abf2-136048e5092e_05ab7e4a-ffa5-48c9-9c2e-8bd177206d55.jpeg",
-            "isCustomizable": true,
-            "isVeg": false,
-        },
-        {
-            "id": "p3",
-            "name": "Chicken Supreme Pizza",
-            "description": "Delicious pizza with chicken and vegetables.",
-            "price": 449,
-            "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/FOOD_CATALOG/IMAGES/CMS/2024/9/19/e1e9ebad-6ef4-45d2-abf2-136048e5092e_05ab7e4a-ffa5-48c9-9c2e-8bd177206d55.jpeg",
-            "isCustomizable": true,
-            "isVeg": false,
-        }
-    ],
-    biryani: [
-        {
-            "id": "b1",
-            "name": "Chicken Biryani",
-            "description": "Aromatic biryani with tender chicken pieces.",
-            "price": 250,
-            "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/b461d252b9bfa267e5faa89a5284853f",
-            "isCustomizable": true,
-            "isVeg": false,
-        },
-        {
-            "id": "b2",
-            "name": "Mutton Biryani",
-            "description": "Rich and flavorful mutton biryani.",
-            "price": 350,
-            "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/b461d252b9bfa267e5faa89a5284853f",
-            "isCustomizable": true,
-            "isVeg": false,
-        },
-        {
-            "id": "b3",
-            "name": "Veg Biryani",
-            "description": "Delicious vegetarian biryani with mixed vegetables.",
-            "price": 180,
-            "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/286ebc9e01804994376af9feb5474d03",
-            "isCustomizable": true,
-            "isVeg": true,
-        }
-    ],
-    bread: [
-        {
-            "id": "br1",
-            "name": "Garlic Naan",
-            "description": "Soft naan bread with garlic and herbs.",
-            "price": 45,
-            "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/FOOD_CATALOG/IMAGES/CMS/2024/7/2/6ef07bda-b707-48ea-9b14-2594071593d1_Paratha.png",
-            "isCustomizable": false,
-            "isVeg": true,
-        },
-        {
-            "id": "br2",
-            "name": "Butter Roti",
-            "description": "Fresh roti with butter.",
-            "price": 25,
-            "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/FOOD_CATALOG/IMAGES/CMS/2024/7/2/6ef07bda-b707-48ea-9b14-2594071593d1_Paratha.png",
-            "isCustomizable": false,
-            "isVeg": true,
-        }
-    ]
-}

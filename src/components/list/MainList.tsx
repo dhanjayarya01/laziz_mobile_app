@@ -19,7 +19,7 @@ import SortingAndFilters from '@components/home/SortingAndFilters';
 
 const sectionedData = [
   {title: 'Explore', data: [{}], renderItem: () => <ExploreList />},
-  {title: 'Foods', data: [{}], renderItem: () => <RestaurantList />},
+  {title: 'Restaurants', data: [{}], renderItem: () => <RestaurantList />},
 ];
 
 const MainList: FC = () => {
@@ -91,7 +91,7 @@ const MainList: FC = () => {
     viewableItems: Array<ViewToken>;
   }) => {
     const restaurantVisible = viewableItems.some(
-      item => item?.section?.title === 'Foods' && item?.isViewable,
+      item => item?.section?.title === 'Restaurants' && item?.isViewable,
     );
     setIsRestaurantsVisible(restaurantVisible);
   };
@@ -116,7 +116,7 @@ const MainList: FC = () => {
         viewabilityConfig={viewabilityConfig}
         onViewableItemsChanged={onViewableItemsChanged}
         renderSectionHeader={({section}) => {
-          if (section.title !== 'Foods') {
+          if (section.title !== 'Restaurants') {
             return null;
           }
           return (
@@ -124,7 +124,7 @@ const MainList: FC = () => {
               style={[
                 isRestaurantVisible || isNearEnd ? styles.shadowBottom : null,
               ]}>
-              <SortingAndFilters menuTitle="Categories" options={filtersOption} />
+              <SortingAndFilters menuTitle="Sort" options={filtersOption} />
             </Animated.View>
           );
         }}

@@ -11,8 +11,8 @@ import ScalePress from '@components/ui/ScalePress';
 import {
   DeliveryTabIcon,
   DiningTabIcon,
-  OrdersTabIcon,
-  ProfileTabIcon,
+  LiveTabIcon,
+  ReorderTabIcon,
 } from './TabIcon';
 import {useAppSelector} from '@states/reduxHook';
 import CartHOC from '@features/checkout/CartHOC';
@@ -25,7 +25,7 @@ const CustomTabBar: FC<BottomTabBarProps> = props => {
   const bottom = useSafeAreaInsets();
 
   const {styles} = useStyles(tabStyles);
-  const isProfileTabFocused = state.routes[state.index]?.name === 'Profile';
+  const isLiveTabFocused = state.routes[state.index]?.name === 'Profile';
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
@@ -50,14 +50,14 @@ const CustomTabBar: FC<BottomTabBarProps> = props => {
 
   return (
     <>
-      {!isProfileTabFocused && <CartHOC />}
+      {!isLiveTabFocused && <CartHOC />}
       <Animated.View
         style={[
           styles.tabBarContainer,
           animatedStyle,
           {
             paddingBottom: bottom.bottom,
-            backgroundColor: isProfileTabFocused ? Colors.dark : Colors.background,
+            backgroundColor: isLiveTabFocused ? Colors.dark : Colors.background,
           },
         ]}>
         <View style={styles.tabContainer}>
@@ -95,13 +95,13 @@ const CustomTabBar: FC<BottomTabBarProps> = props => {
                 {route?.name === 'Home' && (
                   <DeliveryTabIcon focused={isFocused} />
                 )}
-                {route?.name === 'Orders' && (
-                  <OrdersTabIcon focused={isFocused} />
+                {route?.name === 'Order' && (
+                  <ReorderTabIcon focused={isFocused} />
                 )}
                 {route?.name === 'Dining' && (
                   <DiningTabIcon focused={isFocused} />
                 )}
-                {route?.name === 'Profile' && <ProfileTabIcon focused={isFocused} />}
+                {route?.name === 'Profile' && <LiveTabIcon focused={isFocused} />}
               </ScalePress>
             );
           })}
@@ -113,7 +113,7 @@ const CustomTabBar: FC<BottomTabBarProps> = props => {
             styles.slidingIndicator,
             indicatorStyle,
             {
-              backgroundColor: isProfileTabFocused
+              backgroundColor: isLiveTabFocused
                 ? '#fff'
                 : isVegMode
                 ? Colors.active
@@ -122,17 +122,6 @@ const CustomTabBar: FC<BottomTabBarProps> = props => {
           ]}
         />
 
-        <TouchableOpacity
-          activeOpacity={0.9}
-          style={styles.groceryLogoContainer}
-          onPress={() => {
-            Alert.alert('Please like and subscribe!');
-          }}>
-          <Image
-            source={require('@assets/icons/grocery.png')}
-            style={styles.groceryLogo}
-          />
-        </TouchableOpacity>
       </Animated.View>
     </>
   );
